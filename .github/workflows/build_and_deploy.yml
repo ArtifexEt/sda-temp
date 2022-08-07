@@ -37,7 +37,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build:prod
-      - run: cp -v dist/index.html 404.html
+      - run: cp -v ./dist/sda-material-demo/index.html ./dist/sda-material-demo/404.html
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
