@@ -32,8 +32,6 @@ export class AboutComponent implements OnInit {
         console.log("Wynik", rezultatZDialogu)
       }
     )).subscribe()
-
-    // dialog.updateSize("900px", "800px")
   }
 
 }
