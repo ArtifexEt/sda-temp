@@ -1,0 +1,9 @@
+<div mat-dialog-title mat-dialog-close="brak"> Moj super dialog</div>
+<mat-form-field appearance="fill">
+  <mat-label>Favorite Animal</mat-label>
+  <input matInput (change)="changeAnimal($event)">
+</mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button >No Thanks</button>
+  <button mat-button [mat-dialog-close]="wynik" cdkFocusInitial>Ok</button>
+</div>
