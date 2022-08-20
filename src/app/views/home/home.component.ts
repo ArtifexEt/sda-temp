@@ -3,7 +3,7 @@ import {NBPService} from "../../services/nbp.service";
 import {interval, Observable} from "rxjs";
 import {ExchangeRates, Rate} from "../../services/exchange-rates";
 import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
+import {MatPaginator, PageEvent} from "@angular/material/paginator";
 
 
 @Component({
@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['currency', 'code', 'mid'];
   public dataSource =  new MatTableDataSource<Rate>([]);
 
+  public srednia = 0;
+
   private dataSubscription;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.dataSubscription = this.nbpService.getAverageExchangeRates$().subscribe((exchangeRates) => {
       this.dataSource.data = exchangeRates.rates;
+      this.srednia = exchangeRates.rates.reduce(((previousValue, currentValue) => previousValue + currentValue.mid), 0) / exchangeRates.rates.length;
     })
   }
 
@@ -39,4 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
+  test($event: PageEvent) {
+    console.log($event)
+    // this.dataSubscription = this.nbpService.getAverageExchangeRates$().subscribe((exchangeRates) => {
+    //   this.dataSource.data = exchangeRates.rates;
+    // })
+  }
 }

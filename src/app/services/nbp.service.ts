@@ -18,6 +18,7 @@ export class NBPService {
   }
 
   public getAverageExchangeRates$(): Observable<ExchangeRates> {
+
     return this.http.get<ExchangeRates[]>('https://api.nbp.pl/api/exchangerates/tables/a/').pipe(
       map(response => response[0]),
       shareReplay()
