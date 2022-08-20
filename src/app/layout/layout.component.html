@@ -7,6 +7,13 @@
     <mat-nav-list>
       <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/home']">Home</a>
       <a mat-list-item [routerLinkActive]="'active'"  [routerLink]="['/about']">About</a>
+      <a mat-list-item [routerLinkActive]="'active'"  [routerLink]="['/parametr', {
+      imie: 'Krzysiek',
+      wiek: 20 }]">Parametr</a>
+
+      <a mat-list-item [routerLinkActive]="'active'"  [routerLink]="['/parametr', {
+      imie: 'Patrycja',
+      wiek: 20 }]">Parametr 2</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
