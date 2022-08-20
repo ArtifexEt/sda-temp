@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NBPService} from "../../services/nbp.service";
+import {Observable} from "rxjs";
+import {ExchangeRates} from "../../services/exchange-rates";
 
 
 @Component({
@@ -8,10 +10,11 @@ import {NBPService} from "../../services/nbp.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public wynik;
+  displayedColumns: string[] = ['currency', 'code', 'mid'];
+  public wynik$: Observable<ExchangeRates>;
 
   constructor(private nbpService:NBPService) {
-    this.wynik = this.nbpService.getExchangeRates();
+    this.wynik$ = this.nbpService.getAverageExchangeRates$();
   }
 
   ngOnInit(): void {

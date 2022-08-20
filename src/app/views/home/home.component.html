@@ -1,4 +1,42 @@
-<div>
-  {{ (wynik | async)?.[0]?.table | json }}
-  {{ (wynik | async)?.[0]?.no | json }}
+<div *ngIf="(wynik$ | async) as wynik; else loading" >
+
+  <p>Date: {{wynik.effectiveDate}}</p>
+  <p>No: {{wynik.no}}</p>
+  <p>Table: {{wynik.table}}</p>
+
+<!--  <section *ngFor="let rate of wynik.rates">-->
+<!--    <p>Code: {{ rate.code }}</p>-->
+<!--    <p>Mid: {{ rate.mid }}</p>-->
+<!--    <p>Currency: {{ rate.currency }}</p>-->
+<!--  </section>-->
+  <table mat-table [dataSource]="wynik.rates">
+    <!-- Currency Column -->
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef> Currency </th>
+      <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+    </ng-container>
+
+    <!-- mid Column -->
+    <ng-container matColumnDef="mid">
+      <th mat-header-cell *matHeaderCellDef> Mid </th>
+      <td mat-cell *matCellDef="let element"> {{element.mid}} </td>
+    </ng-container>
+
+    <!-- code Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Code !!! </th>
+      <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
 </div>
+
+<ng-template #loading>
+  Loading....
+</ng-template>
+
+

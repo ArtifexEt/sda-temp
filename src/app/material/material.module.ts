@@ -9,6 +9,7 @@ import {LayoutModule} from "@angular/cdk/layout";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import {MatListModule} from "@angular/material/list";
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    MatTableModule
   ]
 })
 export class MaterialModule { }
